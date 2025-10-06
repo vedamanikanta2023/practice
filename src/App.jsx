@@ -3,11 +3,13 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { UserDetails } from './UserDetails'
+import { Sample } from './Sample'
 
 function App() {
   return (
     <>
-      <UserDetails />    
+      <UserDetails />   
+      <Sample /> 
     </>
   )
 }
