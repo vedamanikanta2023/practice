@@ -1,15 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { UserDetails } from './UserDetails'
 import { Sample } from './Sample'
+import Alert from './Alert'
 
 function App() {
   return (
     <>
-      <UserDetails />   
-      <Sample /> 
+      <Alert type="success" message={"Your payment is successful"} />
+      {/* <UserDetails />    */}
+      {/* <Sample />  */}
     </>
   )
 }
