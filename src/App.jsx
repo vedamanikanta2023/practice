@@ -8,7 +8,7 @@ function App() {
     <>
       <Alert type="success" message={"Your payment is successful"} />
       {/* <UserDetails />    */}
-      {/* <Sample />  */}
+      <Sample /> 
     </>
   )
 }
