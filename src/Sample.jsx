@@ -1,21 +1,13 @@
 import { useEffect, useState } from "react";
 
-function debounce (func,delay){
-  let timerId;
-  return function(...args){
-    const context = this;
-    clearTimeout(timerId);
-    timerId = setTimeout(()=>{
-      func.apply(context,args);
-    },delay);
-  }
-}
+let timeoutId;
 
 export function Sample() {
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilterdUsers] = useState([]);
+  const [inputValue, setInputValue] = useState("");
   const [searchString, setSearchString] = useState("");
-console.log(searchString)
+
   const fetchData = async () => {
     try {
       const response = await fetch(
@@ -26,27 +18,40 @@ console.log(searchString)
       }
       const data = await response.json();
       setUsers(data);
-      // handleFilterUsers()
     } catch (e) {
       console.error("catch bloack", e);
     }
   };
 
+  console.log(searchString);
+
   const handleFilterUsers = () => {
     const filtered = users.filter((user) =>
-      JSON.stringify(user).toLowerCase().includes(searchString.toLocaleLowerCase())
+      JSON.stringify(user)
+        .toLowerCase()
+        .includes(searchString.toLocaleLowerCase())
     );
     setFilterdUsers(!!searchString ? filtered : users);
   };
 
-  const handleSearchString = (e)=>{
-    const inputValue = e.target.value;
-    debounce(setSearchString(inputValue,500))
-  }
+  // Effect to debounce the input value
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setSearchString(inputValue);
+    }, 500); 
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [inputValue]); 
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
   useEffect(() => {
     fetchData();
-  },[]);
+  }, []);
 
   useEffect(() => {
     handleFilterUsers();
@@ -54,16 +59,13 @@ console.log(searchString)
 
   return (
     <>
-      <input id="searchinput"
-        value={searchString}
-        onChange={handleSearchString}
-      />
+      <input id="searchinput" value={inputValue} onChange={handleChange} />
       {searchString && (
         <p>
           Results with <strong>{searchString}</strong>{" "}
         </p>
       )}
-      <table  style={{marginTop:10}}>
+      <table style={{ marginTop: 10 }}>
         <tbody>
           <tr>
             <th style={{ textAlign: "start" }}>email</th>
@@ -88,24 +90,4 @@ console.log(searchString)
       </table>
     </>
   );
-}
-
-
-
-function useDebounce(value, delay) {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-
-  useEffect(() => {
-    // Set a timer to update debouncedValue after the specified delay
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    // Clear the timeout if the value changes or the component unmounts
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]); // Re-run effect if value or delay changes
-
-  return debouncedValue;
 }
