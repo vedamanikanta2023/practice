@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useFetch from "./useFetch";
 
 const url="https://jsonplaceholder.typicode.com/users";
+
 const Alert = ({ type, message }) => {
   const colors = {
     success: "green",
@@ -9,7 +10,7 @@ const Alert = ({ type, message }) => {
     warning: "orange",
   };
   const [timer, setTimer] = useState(0);
-  const [data] = useFetch("https://jsonplaceholder.typicode.com/todos");
+  const [data] = useFetch(url);
 
 
   useEffect(() => {
