@@ -6,6 +6,8 @@ import { MetaData } from './MetaData'
 import Component1 from './Components'
 import ImageViewer from './ImageViewer'
 import Header from './Header'
+import PositionDemo from './PositionDemo'
+import { Timer } from './NeCopmp'
 
 const shoeCollections=[];
 for(let i=0;i<100;i++){
@@ -20,17 +22,19 @@ function App() {
   }
   return (
     <>
+    <Timer />
+    {/* <PositionDemo />
     <Header />
     <div className="gallery-grid">
       {shoeCollections.map((collection, index) => (
         <ImageViewer />
       ))}
-    </div>
+    </div> */}
     {/* <ImageViewer /><ImageViewer /><ImageViewer /><ImageViewer /><ImageViewer /><ImageViewer /><ImageViewer /><ImageViewer /><ImageViewer /><ImageViewer /><ImageViewer /> */}
     {/* <ShoeStore /> */}
     {/* <Component1 /> */}
     {/* <MetaData /> */}
-      {/* <Alert type="success" message={"Your payment is successful"} /> */}
+      <Alert type="success" message={"Your payment is successful"} />
       {/* <UserDetails />    */}
       {/* <Sample />  */}
     </>
