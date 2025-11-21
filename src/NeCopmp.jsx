@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+
 let timerId;
+
 export const Timer = () => {
   const [timerValue, setTimerValue] = useState(10);
   const [timerRunning, setTimerRunning] = useState(false);
@@ -17,9 +19,11 @@ export const Timer = () => {
       }
     }, 1000);
   };
+
   const addOrange = () => {
     setItems((prevArr) => [...prevArr, "endra"]);
   };
+
   useEffect(() => {
     clearInterval(timerId);
     updateTimer();
@@ -30,7 +34,6 @@ export const Timer = () => {
       setTimerRunning(false);
       clearInterval(timerId);
       setTimerValue(10);
-      alert("Timer stopped");
     }
   }, [timerValue]);
 
@@ -42,28 +45,30 @@ export const Timer = () => {
         ))}
       </ol>
       <button onClick={addOrange}>add orange</button>
-      
+
       <h1>{timerValue}</h1>
-      <button
-        disabled={timerRunning}
-        onClick={() => {
-          setTimerValue(10);
-          setTimerRunning(false);
-        }}
-      >
-        Reset
-      </button>
-      <button disabled={timerRunning} onClick={runTimer}>
-        Start
-      </button>
-      <button
-        disabled={!timerRunning}
-        onClick={() => {
-          setTimerRunning((prev) => !!!prev);
-        }}
-      >
-        Stop
-      </button>
+      <div style={{"display":"flex", gap:"4px"}}>
+        <button
+          disabled={timerRunning}
+          onClick={() => {
+            setTimerValue(10);
+            setTimerRunning(false);
+          }}
+        >
+          Reset
+        </button>
+        <button disabled={timerRunning} onClick={runTimer}>
+          {timerValue !== 10 && !timerRunning ? "Resume" : "Start"}
+        </button>
+        <button
+          disabled={!timerRunning}
+          onClick={() => {
+            setTimerRunning((prev) => !!!prev);
+          }}
+        >
+          Stop
+        </button>
+      </div>
     </>
   );
 };
