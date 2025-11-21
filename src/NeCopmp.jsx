@@ -3,6 +3,8 @@ let timerId;
 export const Timer = () => {
   const [timerValue, setTimerValue] = useState(10);
   const [timerRunning, setTimerRunning] = useState(false);
+  const [items, setItems] = useState(["apple", "banana"]);
+
   const runTimer = () => {
     setTimerRunning(true);
   };
@@ -10,12 +12,14 @@ export const Timer = () => {
   const updateTimer = () => {
     timerId = setInterval(() => {
       if (timerRunning) {
-        console.log({timerId,timerValue})
+        console.log({ timerId, timerValue, Timer });
         setTimerValue((timerValue) => timerValue - 1);
       }
     }, 1000);
   };
-
+  const addOrange = () => {
+    setItems((prevArr) => [...prevArr, "endra"]);
+  };
   useEffect(() => {
     clearInterval(timerId);
     updateTimer();
@@ -26,12 +30,19 @@ export const Timer = () => {
       setTimerRunning(false);
       clearInterval(timerId);
       setTimerValue(10);
-      alert("Timer stopped")
+      alert("Timer stopped");
     }
   }, [timerValue]);
 
   return (
     <>
+      <ol>
+        {items.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ol>
+      <button onClick={addOrange}>add orange</button>
+      
       <h1>{timerValue}</h1>
       <button
         disabled={timerRunning}
