@@ -6,35 +6,52 @@ export const Timer = () => {
   const runTimer = () => {
     setTimerRunning(true);
   };
-  console.log(timerValue)
+
   const updateTimer = () => {
-   timerId= setInterval(() => {
-      setTimerValue(timerValue=>timerValue - 1);
+    timerId = setInterval(() => {
+      if (timerRunning) {
+        console.log({timerId,timerValue})
+        setTimerValue((timerValue) => timerValue - 1);
+      }
     }, 1000);
   };
 
   useEffect(() => {
-    if (timerRunning) {
-      updateTimer();
-    }
-
-    return ()=>{
-        // fetchign()
-    }
+    clearInterval(timerId);
+    updateTimer();
   }, [timerRunning]);
 
   useEffect(() => {
-    if (timerValue === 0) {
+    if (timerValue < 1) {
       setTimerRunning(false);
       clearInterval(timerId);
+      setTimerValue(10);
+      alert("Timer stopped")
     }
   }, [timerValue]);
 
   return (
     <>
       <h1>{timerValue}</h1>
+      <button
+        disabled={timerRunning}
+        onClick={() => {
+          setTimerValue(10);
+          setTimerRunning(false);
+        }}
+      >
+        Reset
+      </button>
       <button disabled={timerRunning} onClick={runTimer}>
-        Start Timer
+        Start
+      </button>
+      <button
+        disabled={!timerRunning}
+        onClick={() => {
+          setTimerRunning((prev) => !!!prev);
+        }}
+      >
+        Stop
       </button>
     </>
   );

@@ -34,7 +34,7 @@ function App() {
     {/* <ShoeStore /> */}
     {/* <Component1 /> */}
     {/* <MetaData /> */}
-      <Alert type="success" message={"Your payment is successful"} />
+      {/* <Alert type="success" message={"Your payment is successful"} /> */}
       {/* <UserDetails />    */}
       {/* <Sample />  */}
     </>
