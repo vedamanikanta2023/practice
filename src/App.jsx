@@ -7,7 +7,7 @@ import Component1 from './Components'
 import ImageViewer from './ImageViewer'
 import Header from './Header'
 import PositionDemo from './PositionDemo'
-import { Timer } from './NeCopmp'
+import { Timer } from './Timer'
 
 const shoeCollections=[];
 for(let i=0;i<100;i++){
