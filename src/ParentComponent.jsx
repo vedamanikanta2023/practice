@@ -39,11 +39,18 @@ export default function Parent() {
     console.log("Button clicked!");
   }, []);
 
+  // 🔥 useMemo memoizes an expensive calculation  
+  const doubledCount = useMemo(() => {
+    console.log("useMemo recalculated...");
+    return count * 2;
+  }, [count]);
+
   return (
     <div style={{ padding: 20 }}>
       <h2>Parent Component</h2>
 
       <button onClick={() => setCount(count + 1)}>Increment: {count}</button>
+      <h3>Doubled Value (from useMemo): {doubledCount}</h3>
 
       <input
         placeholder="Type something"
