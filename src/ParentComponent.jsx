@@ -1,20 +1,17 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import ChildComponent from "./ChildComponent";
 
 export default function Parent() {
   const [count, setCount] = useState(0);
   const [value, setValue] = useState("");
 
-  // 🔥 useCallback memoizes this function
-  const handleClick = useCallback(() => {
-    setCount((pre) => pre + 4983);
-    console.log("Button handleClick!");
-  }, []);
-
   const handleClickDupe = () => {
-    setCount((pre) => pre + 4983);
-    console.log("Button handleClickDupe!");
-  };
+      setCount((pre) => pre + 4983);
+      console.log("Button clicked!");
+    };
+    
+    // 🔥 useCallback memoizes this function
+    const handleClick = useCallback(handleClickDupe, []);
 
   // 🔥 useMemo memoizes an expensive calculation
   const doubledCount = useMemo(() => {
