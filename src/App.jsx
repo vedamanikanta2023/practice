@@ -8,6 +8,7 @@ import ImageViewer from './ImageViewer'
 import Header from './Header'
 import PositionDemo from './PositionDemo'
 import { Timer } from './Timer'
+import Parent from './ParentComponent'
 
 const shoeCollections=[];
 for(let i=0;i<100;i++){
@@ -22,7 +23,8 @@ function App() {
   }
   return (
     <>
-    <Timer />
+    <Parent />
+    {/* <Timer /> */}
     {/* <PositionDemo />
     <Header />
     <div className="gallery-grid">
