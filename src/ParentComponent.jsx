@@ -7,7 +7,6 @@ export default function Parent() {
 
   const handleClickDupe = () => {
       setCount((pre) => pre + 4983);
-      console.log("Button clicked!");
     };
     
     // 🔥 useCallback memoizes this function
@@ -15,7 +14,6 @@ export default function Parent() {
 
   // 🔥 useMemo memoizes an expensive calculation
   const doubledCount = useMemo(() => {
-    console.log("useMemo recalculated...");
     return count * 2;
   }, [count]);
 
