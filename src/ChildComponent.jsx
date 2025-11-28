@@ -1,7 +1,7 @@
 import React from "react";
 
 function Child({ onClick, title }) {
-  console.log("Child Rendered " + title);
+
   return (
     <div style={{ marginTop: 20 }}>
       <p>{title}</p>
