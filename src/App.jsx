@@ -9,6 +9,7 @@ import Header from './Header'
 import PositionDemo from './PositionDemo'
 import { Timer } from './Timer'
 import Parent from './ParentComponent'
+import { ControlledUncontrolled } from './ControlledUncontrolled/ControlledUncontrolled'
 
 const shoeCollections=[];
 for(let i=0;i<100;i++){
@@ -23,7 +24,8 @@ function App() {
   }
   return (
     <>
-    <Parent />
+    <ControlledUncontrolled />
+    {/* <Parent /> */}
     {/* <Timer /> */}
     {/* <PositionDemo />
     <Header />
