@@ -10,6 +10,8 @@ import PositionDemo from './PositionDemo'
 import { Timer } from './Timer'
 import Parent from './ParentComponent'
 import { ControlledUncontrolled } from './ControlledUncontrolled/ControlledUncontrolled'
+import { MemoizedComp } from './Memoizing/MemoizedComp'
+import { CallingMemoizedComp } from './Memoizing/CallingMemoizedComp'
 
 const shoeCollections=[];
 for(let i=0;i<100;i++){
@@ -24,7 +26,8 @@ function App() {
   }
   return (
     <>
-    <ControlledUncontrolled />
+    <CallingMemoizedComp />
+    {/* <ControlledUncontrolled /> */}
     {/* <Parent /> */}
     {/* <Timer /> */}
     {/* <PositionDemo />
