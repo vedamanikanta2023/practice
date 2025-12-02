@@ -15,6 +15,7 @@ import { CallingMemoizedComp } from "./Memoizing/CallingMemoizedComp";
 import ThemedComponent, { ThemeContext } from "./ContextAPI/ThemeContext";
 import ConsumeContextAPI from "./ContextAPI/ConsumeContextAPI";
 import React from "react";
+import Form from "./ActionsAPI/ActionsAPI";
 
 const shoeCollections = [];
 for (let i = 0; i < 100; i++) {
@@ -44,6 +45,7 @@ function App() {
   return (
     <ThemedComponent>
       <div style={getTheme()}>
+        <Form />
         <ConsumeContextAPI />
         <CallingMemoizedComp />
         {/* <ControlledUncontrolled /> */}
