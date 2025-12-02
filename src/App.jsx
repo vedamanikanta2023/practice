@@ -16,6 +16,9 @@ import ThemedComponent, { ThemeContext } from "./ContextAPI/ThemeContext";
 import ConsumeContextAPI from "./ContextAPI/ConsumeContextAPI";
 import React from "react";
 import Form from "./ActionsAPI/ActionsAPI";
+import User from "./Use/Use";
+
+import { Suspense } from "react";
 
 const shoeCollections = [];
 for (let i = 0; i < 100; i++) {
@@ -24,7 +27,8 @@ for (let i = 0; i < 100; i++) {
 
 function App() {
   try {
-    console.log(yedava);
+    const not = "";
+    console.log(not);
   } catch (error) {
     console.warn(`in catch block `, error);
   }
@@ -45,9 +49,12 @@ function App() {
   return (
     <ThemedComponent>
       <div style={getTheme()}>
-        <Form />
-        <ConsumeContextAPI />
-        <CallingMemoizedComp />
+        <Suspense fallback={<h2>Loading...</h2>}>
+          <User />
+        </Suspense>
+        {/* <Form /> */}
+        {/* <ConsumeContextAPI /> */}
+        {/* <CallingMemoizedComp /> */}
         {/* <ControlledUncontrolled /> */}
         {/* <Parent /> */}
         {/* <Timer /> */}
