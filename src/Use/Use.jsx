@@ -3,6 +3,7 @@ const todoPromise = fetch("https://jsonplaceholder.typicode.com/todos/1").then(
 );
 
 import { use, useEffect, useEffectEvent } from "react";
+import { Head } from "../Meta/Meta";
 
 function User() {
   const user = use(todoPromise);
@@ -15,6 +16,7 @@ function User() {
   }, []);
   return (
     <>
+    <Head />
       <h1>Hello</h1>
       <h1>ID: {user.id}</h1>
       <h1>Title: {user.title}</h1>
