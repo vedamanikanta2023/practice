@@ -8,13 +8,16 @@ export const TodosList = () => {
     if (!todo) {
       return;
     }
+    // debugger;
     const newTodo = {
       task: todo,
-      key: String(Math.random() * 131232),
+      key: String(Math.random() * 10000),
     };
     setTodos((prevTodos) => [...prevTodos, newTodo]);
     setTodo("");
   };
+
+  console.log("todods", todos);
 
   const deleteTodo = (key) => {
     const filteredTodos = todos.filter((todo) => todo.key !== key);
@@ -36,16 +39,21 @@ export const TodosList = () => {
         {todos.map((todo) => {
           return (
             <>
-              <li style={{width:"100%"}}>
-                <div  key={todo.key} style={{width:"100%",display:"flex",justifyContent:"space-between"}}>
-                  
-                <p>{todo.task}</p>
-                <button
-                  style={{ marginLeft: "10px" }}
-                  onClick={() => deleteTodo(todo.key)}
+              <li style={{ width: "100%" }} key={todo}>
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
                 >
-                  delete
-                </button>  
+                  <p>{todo.task}</p>
+                  <button
+                    style={{ marginLeft: "10px" }}
+                    onClick={() => deleteTodo(todo.key)}
+                  >
+                    delete
+                  </button>
                 </div>
               </li>
             </>
