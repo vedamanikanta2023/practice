@@ -21,9 +21,9 @@ export function ClassComponent() {
     setCount((prev) => prev + 1);
   };
   return (
-    <>
+    <React.Fragment>
       <div>{count}</div>
       <MyComponent onClick={onClick} />
-    </>
+    </React.Fragment>
   );
 }
