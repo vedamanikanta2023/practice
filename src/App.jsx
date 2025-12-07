@@ -22,6 +22,7 @@ import { Suspense } from "react";
 import { TodosList } from "./TodosList";
 // import ConsumeHOC from "./HOC/ConsumeHOC";
 import { UserDetails } from "./UserDetails/UserDetails";
+import { ClassComponent } from "./ClassComponent/ClassComponent";
 
 const shoeCollections = [];
 for (let i = 0; i < 100; i++) {
@@ -51,8 +52,9 @@ function App() {
 
   return (
     <ThemedComponent>
+      <ClassComponent />
       <div style={getTheme()}>
-<UserDetails />
+{/* <UserDetails /> */}
         {/* <ConsumeHOC /> */}
         {/* <TodosList /> */}
         {/* <Suspense fallback={<h2>Loading...</h2>}>
