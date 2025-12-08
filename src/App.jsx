@@ -23,6 +23,7 @@ import { TodosList } from "./TodosList";
 // import ConsumeHOC from "./HOC/ConsumeHOC";
 import { UserDetails } from "./UserDetails/UserDetails";
 import { ClassComponent } from "./ClassComponent/ClassComponent";
+import { UseMemo } from "./UseMemo/UseMemo";
 
 const shoeCollections = [];
 for (let i = 0; i < 100; i++) {
@@ -30,12 +31,12 @@ for (let i = 0; i < 100; i++) {
 }
 
 function App() {
-  try {
-    const not = "";
-    console.log(not);
-  } catch (error) {
-    console.warn(`in catch block `, error);
-  }
+  // try {
+  //   const not = "";
+  //   console.log(not);
+  // } catch (error) {
+  //   console.warn(`in catch block `, error);
+  // }
 
   const theme = React.useContext(ThemeContext);
 
@@ -52,7 +53,8 @@ function App() {
 
   return (
     <ThemedComponent>
-      <ClassComponent />
+      <UseMemo />
+      {/* <ClassComponent /> */}
       <div style={getTheme()}>
 {/* <UserDetails /> */}
         {/* <ConsumeHOC /> */}
