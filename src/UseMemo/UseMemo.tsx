@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function calculate() {
-    console.log("running");
+  console.log("running");
   let result = 0;
   for (let i = 0; i < 1000000000; i++) {
     result += i;
@@ -14,7 +14,10 @@ export const UseMemo = () => {
   return (
     <div>
       <button onClick={() => setCount(count + 1)}>Increment Count</button>
-      <p>Count: {count}{value}</p>
+      <p>
+        Count: {count}
+        {value}
+      </p>
     </div>
   );
 };
