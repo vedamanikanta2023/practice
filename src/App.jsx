@@ -31,13 +31,6 @@ for (let i = 0; i < 100; i++) {
 }
 
 function App() {
-  // try {
-  //   const not = "";
-  //   console.log(not);
-  // } catch (error) {
-  //   console.warn(`in catch block `, error);
-  // }
-
   const theme = React.useContext(ThemeContext);
 
   const getTheme = () => {
@@ -56,7 +49,7 @@ function App() {
       <UseMemo />
       {/* <ClassComponent /> */}
       <div style={getTheme()}>
-{/* <UserDetails /> */}
+        {/* <UserDetails /> */}
         {/* <ConsumeHOC /> */}
         {/* <TodosList /> */}
         {/* <Suspense fallback={<h2>Loading...</h2>}>
