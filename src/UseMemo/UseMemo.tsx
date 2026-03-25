@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function calculate() {
   console.log("running");
@@ -11,11 +11,15 @@ function calculate() {
 export const UseMemo = () => {
   const [count, setCount] = useState(0);
   const value = calculate();
+  useEffect(() => {
+  console.log('Effect runs');
+  return () => console.log('Cleanup runs',count);
+}, [count]);
   return (
     <div>
       <button onClick={() => setCount(count + 1)}>Increment Count</button>
       <p>
-        Count: {count}
+        Count: {count}<br/>
         {value}
       </p>
     </div>
