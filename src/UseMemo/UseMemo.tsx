@@ -11,11 +11,17 @@ function calculate() {
 export const UseMemo = () => {
   const [count, setCount] = useState(0);
   const value = calculate();
+
   useEffect(() => {
-  console.log('Effect runs');
+
+    setInterval(()=>{
+    setCount(prev=>prev+1);
+  },1000)
+
   return () => console.log('Cleanup runs',count);
-}, [count]);
+}, []);
   return (
+
     <div>
       <button onClick={() => setCount(count + 1)}>Increment Count</button>
       <p>
