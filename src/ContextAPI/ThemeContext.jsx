@@ -4,6 +4,7 @@ export const ThemeContext = React.createContext("theme");
 
 const ThemedComponent = ({ children }) => {
   const [theme, setTheme] = useState("light");
+  console.log('calling themeing',theme)
   const changeTheme = ()=>{
     setTheme(prev=>prev==="dark"?"light":"dark");
   }

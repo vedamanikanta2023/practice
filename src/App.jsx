@@ -14,7 +14,7 @@ import { MemoizedComp } from "./Memoizing/MemoizedComp";
 import { CallingMemoizedComp } from "./Memoizing/CallingMemoizedComp";
 import ThemedComponent, { ThemeContext } from "./ContextAPI/ThemeContext";
 import ConsumeContextAPI from "./ContextAPI/ConsumeContextAPI";
-import React from "react";
+import React, { useMemo } from "react";
 import Form from "./ActionsAPI/ActionsAPI";
 import User from "./Use/Use";
 
@@ -23,7 +23,7 @@ import { TodosList } from "./TodosList";
 // import ConsumeHOC from "./HOC/ConsumeHOC";
 import { UserDetails } from "./UserDetails/UserDetails";
 import { ClassComponent } from "./ClassComponent/ClassComponent";
-import { UseMemo } from "./UseMemo/UseMemo";
+const UseMemo = React.lazy(() => import("./UseMemo/UseMemo").then(module => ({ default: module.UseMemo })));
 
 const shoeCollections = [];
 for (let i = 0; i < 100; i++) {
@@ -33,7 +33,18 @@ for (let i = 0; i < 100; i++) {
 function App() {
   const theme = React.useContext(ThemeContext);
 
-  const getTheme = () => {
+  // const getTheme = () => {
+  //   if (theme.theme === "dark") {
+  //     return {
+  //       backgroundColor: "black",
+  //       color: "white",
+  //     };
+  //   } else {
+  //     return { backgroundColor: "white", color: "black" };
+  //   }
+  // };
+
+  const getTheme = useMemo(() => {
     if (theme.theme === "dark") {
       return {
         backgroundColor: "black",
@@ -42,13 +53,16 @@ function App() {
     } else {
       return { backgroundColor: "white", color: "black" };
     }
-  };
+  }, [theme.theme]);
 
+  console.log('cons', getTheme)
   return (
-    <ThemedComponent>
-      <UseMemo />
+    <>
+      <Suspense fallback={<div>Loading UseMemo...</div>}>
+        <UseMemo />
+      </Suspense>
       {/* <ClassComponent /> */}
-      <div style={getTheme()}>
+      <div style={{ ...getTheme }}>
         {/* <UserDetails /> */}
         {/* <ConsumeHOC /> */}
         {/* <TodosList /> */}
@@ -56,7 +70,7 @@ function App() {
           <User />
         </Suspense> */}
         {/* <Form /> */}
-        {/* <ConsumeContextAPI /> */}
+        <ConsumeContextAPI />
         {/* <CallingMemoizedComp /> */}
         {/* <ControlledUncontrolled /> */}
         {/* <Parent /> */}
@@ -76,7 +90,7 @@ function App() {
         {/* <UserDetails />    */}
         {/* <Sample />  */}{" "}
       </div>
-    </ThemedComponent>
+    </>
   );
 }
 

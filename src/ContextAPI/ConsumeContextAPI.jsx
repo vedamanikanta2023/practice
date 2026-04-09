@@ -9,7 +9,7 @@ const ConsumeContextAPI = () => {
   return (
     <React.Fragment>
       <p>theme {theme.theme}</p>
-      <button onClick={onClickButton}>Increase</button>
+      <button onClick={onClickButton}>Thme</button>
     </React.Fragment>
   );
 };
